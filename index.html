@@ -1,23 +1,599 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://yourdomain.com/ionic5-maintenance-cost-guide"
+      },
+      "headline": "아이오닉5 유지비 완벽 분석: 2026년 전기차 비용 절감 가이드",
+      "image": [
+        "https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg"
+       ],
+      "datePublished": "2026-03-20T09:00:00+09:00",
+      "dateModified": "2026-03-20T09:00:00+09:00",
+      "author": {
+        "@type": "Person",
+        "name": "아이오닉5 전문가 그룹"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EV 비용 가이드",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://yourdomain.com/logo.png"
+        }
+      },
+      "description": "2026년 기준 아이오닉5 유지비용을 상세하게 분석합니다. 충전비, 세금, 보험료, 소모품 등 실제 오너가 경험하는 예상 비용과 장단점을 비교하여 합리적인 구매 결정을 돕는 전문 가이드입니다."
+    }
+    </script>
+
+    <!-- Google Fonts for professional look -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        font-family: 'Noto Sans KR', sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.8; /* Increased line height for better readability */
+        background-color: #f5f7fa; /* Soft background color */
+        color: #333;
+      }
+
+      header {
+        background-color: #007bff; /* Primary color (soft blue) */
+        color: white;
+        padding: 2rem 1rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: 700;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 1rem;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #ffc107; /* Accent color (yellow) */
+      }
+
+      main {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        border-radius: 12px;
+      }
+
+      h2, h3, h4 {
+        color: #007bff;
+        border-bottom: 2px solid #e0f0ff; /* Light accent border */
+        padding-bottom: 0.5rem;
+        margin-top: 2rem;
+      }
+
+      h2 { font-size: 2rem; }
+      h3 { font-size: 1.5rem; }
+      h4 { font-size: 1.25rem; }
+
+      p {
+        margin-bottom: 1.5rem;
+        text-align: justify;
+      }
+
+      /* Image styling */
+      .main-image {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Table styling for cost breakdown */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2rem;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        overflow: hidden; /* Ensures borders are rounded */
+      }
+
+      th, td {
+        padding: 1rem;
+        border: 1px solid #ddd;
+        text-align: center;
+      }
+
+      th {
+        background-color: #007bff;
+        color: white;
+        font-weight: 700;
+      }
+
+      td {
+        background-color: #ffffff;
+      }
+
+      /* Card layout for service details/key points */
+      .info-card {
+        background-color: #e0f0ff; /* Soft blue background */
+        border: 1px solid #b3d1ff;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .info-card h4 {
+        color: #0056b3;
+        margin-top: 0;
+      }
+
+      /* Interactive elements (form) */
+      .calculator-form {
+        background-color: #f9f9f9;
+        padding: 2rem;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+        margin-top: 2rem;
+      }
+
+      .calculator-form label {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: #555;
+      }
+
+      .calculator-form input[type="text"],
+      .calculator-form input[type="number"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+
+      .calculator-form button {
+        background-color: #ffc107; /* Accent button color */
+        color: #333;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .calculator-form button:hover {
+        background-color: #e6b300;
+      }
+
+      /* Keyword tags styling */
+      .keyword-tags {
+        margin: 1.5rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .keyword-tags a {
+        background-color: #f0f8ff; /* Very light blue */
+        color: #007bff;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        border: 1px solid #cceeff;
+      }
+
+      .keyword-tags a:hover {
+        background-color: #e0f0ff;
+        color: #0056b3;
+      }
+
+      /* Accordion styling for FAQ */
+      .accordion dt {
+        background-color: #f0f8ff;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+        cursor: pointer;
+        font-weight: 600;
+        color: #007bff;
+        transition: background-color 0.3s ease;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .accordion dt:hover {
+        background-color: #e0f0ff;
+      }
+
+      .accordion dt::after {
+        content: '+';
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+      }
+
+      .accordion dt.active::after {
+        content: '-';
+        transform: rotate(180deg);
+      }
+
+      .accordion dd {
+        margin-left: 0;
+        padding: 1rem;
+        border-left: 3px solid #007bff;
+        background-color: #fafafa;
+        display: none;
+        animation: slideDown 0.3s ease-out;
+      }
+
+      .accordion dt.active + dd {
+        display: block;
+      }
+
+      @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* External links section styling */
+      .external-links ul {
+        list-style: none;
+        padding: 0;
+      }
+      .external-links li {
+        margin-bottom: 0.5rem;
+      }
+      .external-links a {
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      .external-links a:hover {
+        text-decoration: underline;
+        color: #0056b3;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem;
+        font-size: 0.9rem;
+        color: #777;
+        background-color: #f0f0f0;
+        margin-top: 2rem;
+        border-radius: 0 0 12px 12px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        main {
+          padding: 1rem;
+        }
+        nav ul {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+        .keyword-tags {
+          justify-content: center;
+        }
+        .calculator-form input[type="text"],
+        .calculator-form input[type="number"] {
+          width: 90%;
+        }
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>아이오닉5 유지비 완벽 분석: 2026년 전기차 비용 절감 가이드</h1>
+        <nav>
+            <ul>
+                <li><a href="#intro">개요</a></li>
+                <li><a href="#cost-breakdown">유지비 상세 분석</a></li>
+                <li><a href="#comparison">경쟁 모델 비교</a></li>
+                <li><a href="#calculator">유지비 계산기</a></li>
+                <li><a href="#faq">자주 묻는 질문</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <!-- Section: Introduction -->
+        <section id="intro">
+            <img class="main-image" src="https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="아이오닉5 충전하는 이미지">
+            <h2>전기차 시대, 아이오닉5 유지비에 대한 모든 것</h2>
+            <p>전기차 시장이 급성장하면서 현대자동차의 아이오닉5(IONIQ 5)는 독보적인 디자인과 E-GMP 플랫폼의 우수한 성능으로 많은 소비자들에게 '내돈내산' 위시리스트 1순위로 자리매김했습니다. 하지만 전기차를 처음 구매하려는 예비 오너들은 차량 가격 외에 <strong>아이오닉5 유지비</strong>에 대한 궁금증을 가지고 있습니다. 과연 아이오닉5는 내연기관차(ICE)보다 <strong>유지비가 저렴할까요?</strong> 2026년 현재 기준으로 아이오닉5의 실제 <strong>유지비용</strong>을 상세하게 분석하고, 합리적인 구매 결정을 위한 가이드를 제공합니다.</p>
+
+            <div class="keyword-tags" aria-label="아이오닉5 관련 키워드">
+                <a href="#cost-breakdown">아이오닉5 유지비 견적</a>
+                <a href="#cost-breakdown">아이오닉5 충전비</a>
+                <a href="#comparison">아이오닉5 장단점 비교</a>
+                <a href="#faq">아이오닉5 보조금 혜택</a>
+                <a href="#calculator">아이오닉5 예상 금액</a>
+                <a href="#reviews">아이오닉5 오너 후기</a>
+                <a href="#cost-breakdown">아이오닉5 소모품 교체 주기</a>
+                <a href="#comparison">아이오닉5 경쟁 모델 차이점</a>
+                <a href="#faq">아이오닉5 저렴한곳</a>
+                <a href="#faq">전기차 세금 2026</a>
+            </div>
+        </section>
+
+        <section id="cost-breakdown">
+            <h2>아이오닉5 유지비 상세 분석 (2026년 기준)</h2>
+            <p>아이오닉5의 <strong>유지비용</strong>은 크게 충전비, 자동차세 및 보험료, 소모품 교체 비용으로 나눌 수 있습니다. 내연기관차와 비교했을 때 가장 큰 차이점은 연료비 절감 효과입니다. 2026년 현재까지도 전기차에 대한 정부의 지원 정책과 세제 혜택이 유지되고 있어, 전반적인 <strong>평균 유지비</strong>는 내연기관차 대비 낮은 수준입니다. 아래에서 각 항목별 <strong>아이오닉5 비용</strong>을 자세히 살펴보겠습니다.</p>
+
+            <!-- Charging Cost Analysis -->
+            <h3>1. 충전 비용: 가장 큰 비용 절감 요소</h3>
+            <div class="info-card">
+                <p><strong>아이오닉5 유지비</strong>에서 가장 큰 부분을 차지하는 것이 충전 비용입니다. 전기차 충전비는 주유비에 비해 획기적으로 낮으며, 충전 방식에 따라 비용의 <strong>차이점</strong>이 발생합니다. 2026년 기준, 주택용 계량기가 있는 가정용 충전기를 사용하면 kWh당 100~150원대(심야 시간대 기준)로 충전할 수 있습니다. 반면 공공 급속 충전기의 경우 kWh당 300~400원 수준으로 다소 비쌉니다.</p>
+                <p>아이오닉5 롱레인지 모델(77.4kWh) 기준으로 완충 시 주행 가능 거리가 400km 이상이므로, <strong>월별 예상 금액</strong>은 월 2,000km 주행 시 약 4~8만원 수준입니다. 이는 동급 내연기관차의 주유비(월 20~30만원)와 비교했을 때 압도적인 <strong>장점</strong>입니다.</p>
+            </div>
+
+            <table aria-label="아이오닉5 충전 방식별 비용 비교">
+                <caption>아이오닉5 충전 비용 비교 (2026년 기준, 1회 완충 비용)</caption>
+                <thead>
+                    <tr>
+                        <th>충전 방식</th>
+                        <th>평균 비용 (kWh당)</th>
+                        <th>1회 완충 예상 비용 (77.4kWh 기준)</th>
+                        <th>1,000km 주행 시 예상 비용</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>가정용 완속 충전 (심야)</td>
+                        <td>약 120원</td>
+                        <td>약 9,288원</td>
+                        <td>약 23,220원</td>
+                    </tr>
+                    <tr>
+                        <td>공공 급속 충전 (고속도로/공영주차장)</td>
+                        <td>약 350원</td>
+                        <td>약 27,090원</td>
+                        <td>약 67,725원</td>
+                    </tr>
+                    <tr>
+                        <td>동급 내연기관차 주유비</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>약 150,000원</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Tax and Insurance Analysis -->
+            <h3>2. 자동차세 및 보험료: 세제 혜택과 보험 특약</h3>
+            <div class="info-card">
+                <p>전기차 <strong>유지비</strong>의 <strong>장점</strong> 중 하나는 세금입니다. 2026년 현재까지도 전기차에 대한 세금 <strong>혜택</strong>이 적용되고 있습니다. 아이오닉5의 경우, 지방세는 13만원(교육세 포함)으로 고정되어 있어 배기량에 따라 세금이 책정되는 내연기관차에 비해 훨씬 <strong>저렴한곳</strong>입니다. 내연기관 2,000cc 차량의 연간 세금이 50만원 이상인 것을 감안하면, 연간 약 40만원 이상을 절약할 수 있습니다.</p>
+                <p>보험료는 전기차 특성상 일반 차량보다 다소 높게 책정될 수 있습니다. 특히 배터리 가격이 높기 때문에 자차 보험료가 비싸다는 <strong>단점</strong>이 있습니다. 하지만 보험사별로 전기차 <strong>할인</strong> 특약이나 친환경차 <strong>혜택</strong>이 있으므로, 여러 <strong>업체</strong>를 통해 <strong>비교</strong>하고 <strong>견적</strong>을 받아보는 것이 중요합니다. 특히 ‘EV 배터리 보장 특약’ 등을 <strong>추천</strong>합니다.</p>
+            </div>
+
+            <!-- Consumables and Maintenance Analysis -->
+            <h3>3. 소모품 및 정비 비용: 긴 교체 주기와 높은 배터리 보증</h3>
+            <div class="info-card">
+                <p>내연기관차와 달리 전기차는 엔진오일, 연료필터, 점화플러그 등 복잡한 엔진 관련 소모품이 없어 정비 비용이 현저히 낮습니다. <strong>아이오닉5 유지비</strong>의 <strong>장점</strong> 중 하나입니다. 하지만 전기차도 소모품 관리가 필요합니다.</p>
+                <ul>
+                    <li><strong>타이어:</strong> 전기차는 높은 토크로 인해 타이어 마모 속도가 빠르고, 차체 무게가 무겁습니다. 따라서 전기차 전용 타이어(EV 타이어)를 사용하는 것이 좋습니다. 타이어 교체 비용은 일반 타이어보다 비싸다는 <strong>단점</strong>이 있습니다.</li>
+                    <li><strong>브레이크 패드:</strong> 회생 제동 시스템 덕분에 브레이크 패드 마모가 매우 느립니다. 내연기관차보다 2~3배 긴 수명을 가집니다.</li>
+                    <li><strong>배터리:</strong> 아이오닉5의 배터리는 10년/20만km의 보증 기간이 적용됩니다. 사실상 보증 기간 내에는 배터리 교체 비용을 걱정할 필요가 없습니다. 다만 보증 기간 이후의 배터리 교체 <strong>비용</strong>은 여전히 고가이므로, 장기적인 <strong>유지비</strong>를 고려할 때 중요한 <strong>단점</strong>으로 언급됩니다.</li>
+                </ul>
+            </div>
+
+            <p><strong>아이오닉5 유지비</strong>와 관련된 다양한 정보를 찾을 때, <strong>네이버</strong>, <strong>구글</strong>, <strong>유튜브</strong>에서 검색하는 것이 일반적입니다. 특히 <strong>아이오닉5 내돈내산 후기</strong>나 <strong>아이오닉5 디시</strong>와 같은 커뮤니티에서 실제 오너들의 경험을 찾아볼 수 있습니다. <strong>AI</strong> 챗봇인 <strong>ChatGPT</strong>나 <strong>Gemini</strong>를 통해 <strong>아이오닉5 유지비 장단점</strong>에 대한 정보를 요약해보는 것도 좋은 방법입니다. 또한 <strong>신규 가입 혜택</strong>이나 <strong>현금지원</strong>, <strong>사은품</strong> 등을 제공하는 <strong>업체</strong>를 통해 <strong>저렴한곳</strong>을 찾는 것도 가능합니다.</p>
+
+        </section>
+
+        <section id="comparison">
+            <h2>아이오닉5 vs 경쟁 모델 비교: 어떤 선택이 합리적일까?</h2>
+            <p>아이오닉5 구매를 고민하는 분들은 종종 테슬라 모델3, 모델Y, 혹은 기아 EV6와 <strong>비교</strong>합니다. 각 모델의 <strong>유지비용</strong>을 비교하여 <strong>아이오닉5</strong>의 위치를 파악하는 것이 중요합니다. 특히 <strong>아이오닉5 유지비</strong>의 <strong>장점</strong>과 <strong>단점</strong>을 경쟁 모델과 비교해 보겠습니다.</p>
+
+            <table aria-label="아이오닉5와 경쟁 모델 유지비 비교">
+                <caption>아이오닉5 vs 경쟁 모델 연간 유지비 비교 (2026년 예상 기준)</caption>
+                <thead>
+                    <tr>
+                        <th>항목</th>
+                        <th>아이오닉5 (롱레인지)</th>
+                        <th>테슬라 모델3 (롱레인지)</th>
+                        <th>동급 내연기관차 (예: 쏘렌토)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>연간 충전/주유비 (1만 5천km 기준)</td>
+                        <td>약 60만원 (가정용 완속 충전 기준)</td>
+                        <td>약 50만원 (슈퍼차저 이용 시 변동)</td>
+                        <td>약 200만원 (연비 10km/l, 휘발유 1,800원 기준)</td>
+                    </tr>
+                    <tr>
+                        <td>연간 자동차세</td>
+                        <td>13만원</td>
+                        <td>13만원</td>
+                        <td>약 40~50만원</td>
+                    </tr>
+                    <tr>
+                        <td>연간 보험료 (평균)</td>
+                        <td>약 80만원 ~ 120만원</td>
+                        <td>약 90만원 ~ 130만원</td>
+                        <td>약 70만원 ~ 100만원</td>
+                    </tr>
+                    <tr>
+                        <td>연간 소모품 비용 (엔진오일 등)</td>
+                        <td>낮음 (타이어 교체 제외 시)</td>
+                        <td>매우 낮음</td>
+                        <td>높음 (엔진오일, 필터 등)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>총 연간 예상 유지비 (추정)</strong></td>
+                        <td><strong>약 153만원 ~ 193만원</strong></td>
+                        <td><strong>약 153만원 ~ 193만원</strong></td>
+                        <td><strong>약 310만원 ~ 350만원</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>이러한 <strong>비교</strong>를 통해 알 수 있듯이, <strong>아이오닉5 유지비</strong>는 동급 내연기관차에 비해 연간 150만원 이상 절약될 수 있습니다. <strong>아이오닉5의 장점</strong>은 국산차라는 점에서 정비 용이성과 비교적 저렴한 부품 가격을 꼽을 수 있습니다. 반면 테슬라는 소프트웨어 측면에서 <strong>장점</strong>이 있지만, <strong>아이오닉5</strong> 대비 국내 정비 네트워크가 상대적으로 부족하다는 <strong>단점</strong>이 있습니다.</p>
+            <p>최근에는 <strong>아이오닉5 신규 가입 혜택</strong>이나 <strong>이벤트</strong>를 통해 차량 구매 시 <strong>상품권</strong> 또는 <strong>현금지원</strong>을 받을 수 있는 프로모션이 늘어나고 있습니다. <strong>할인</strong> 정보를 찾는 것도 <strong>아이오닉5</strong> 구매 시 초기 비용을 절감하는 중요한 방법입니다.</p>
+        </section>
+
+        <section id="calculator">
+            <h2>나만의 아이오닉5 예상 유지비 계산기</h2>
+            <p>개인의 주행 습관, 충전 환경에 따라 <strong>아이오닉5 유지비</strong>는 크게 달라질 수 있습니다. 아래 계산기를 통해 <strong>예상 금액</strong>을 직접 확인해보고, 본인의 <strong>유지비</strong>를 예측해보세요. 정확한 <strong>견적</strong>을 산출할 수는 없지만 대략적인 <strong>평균</strong>을 알 수 있습니다.</p>
+
+            <div class="calculator-form">
+                <h4>아이오닉5 연간 유지비 시뮬레이션</h4>
+                <label for="annual-mileage">연간 예상 주행거리 (km):</label>
+                <input type="number" id="annual-mileage" placeholder="예: 15000" min="1000">
+
+                <label for="charging-rate">가정용 충전 비율 (%):</label>
+                <input type="number" id="charging-rate" placeholder="예: 70" min="0" max="100">
+
+                <label for="charging-cost-home">가정용 충전 kWh당 단가 (원):</label>
+                <input type="number" id="charging-cost-home" placeholder="예: 120" min="10">
+
+                <label for="charging-cost-public">공공 충전 kWh당 단가 (원):</label>
+                <input type="number" id="charging-cost-public" placeholder="예: 350" min="10">
+
+                <button type="button" onclick="calculateCost()">유지비 계산하기</button>
+
+                <div id="result-area" style="margin-top: 1.5rem; font-size: 1.1rem; font-weight: bold;"></div>
+            </div>
+
+            <script>
+                function calculateCost() {
+                    const mileage = parseFloat(document.getElementById('annual-mileage').value);
+                    const homeRate = parseFloat(document.getElementById('charging-rate').value) / 100;
+                    const homeCost = parseFloat(document.getElementById('charging-cost-home').value);
+                    const publicCost = parseFloat(document.getElementById('charging-cost-public').value);
+                    const resultArea = document.getElementById('result-area');
+
+                    if (isNaN(mileage) || isNaN(homeRate) || isNaN(homeCost) || isNaN(publicCost) || homeRate > 1 || homeRate < 0) {
+                        resultArea.innerHTML = "올바른 값을 입력해주세요.";
+                        return;
+                    }
+
+                    // 아이오닉5 전비 (효율) 롱레인지 AWD 기준 약 4.5km/kWh 가정 (주행 환경에 따라 변동)
+                    const efficiency = 4.5;
+                    const totalConsumption = mileage / efficiency; // 총 필요 전력량 (kWh)
+
+                    const homeConsumption = totalConsumption * homeRate;
+                    const publicConsumption = totalConsumption * (1 - homeRate);
+
+                    const totalChargingCost = (homeConsumption * homeCost) + (publicConsumption * publicCost);
+                    const annualTax = 130000; // 2026년 기준 전기차 자동차세
+
+                    // 보험료는 변수가 많으므로 평균값 제시
+                    const annualInsuranceEstimate = 1000000;
+
+                    const totalMaintenanceCost = totalChargingCost + annualTax + annualInsuranceEstimate;
+
+                    resultArea.innerHTML = `
+                        <p><strong>[연간 유지비 예상 결과]</strong></p>
+                        <p>총 예상 충전 비용: ${totalChargingCost.toLocaleString()} 원</p>
+                        <p>연간 자동차세: ${annualTax.toLocaleString()} 원</p>
+                        <p>연간 예상 보험료: ${annualInsuranceEstimate.toLocaleString()} 원</p>
+                        <p><strong>총 예상 연간 유지비: ${(totalMaintenanceCost).toLocaleString()} 원</strong></p>
+                        <small>*소모품 교체 및 기타 비용은 포함되지 않은 추정치입니다.</small>
+                    `;
+                }
+            </script>
+        </section>
+
+        <section id="reviews">
+            <h2>아이오닉5 오너의 솔직한 후기: 장단점 심층 분석</h2>
+            <p><strong>아이오닉5 유지비</strong>에 대해 가장 정확한 정보는 실제 오너들의 경험에서 나옵니다. 다양한 온라인 커뮤니티(<strong>디시</strong>, 네이버 카페 등)의 <strong>후기</strong>를 종합하여 <strong>아이오닉5 장단점</strong>을 정리했습니다.</p>
+            <div class="info-card">
+                <h4>오너들이 말하는 아이오닉5의 주요 장점</h4>
+                <ul>
+                    <li><strong>탁월한 실내 공간:</strong> 넓은 실내 공간과 2열 레그룸이 <strong>장점</strong>으로 꼽힙니다. 패밀리카로 <strong>추천</strong>하는 경우가 많습니다.</li>
+                    <li><strong>저렴한 유지비:</strong> 내연기관차 대비 압도적으로 낮은 충전 비용이 가장 큰 만족감을 줍니다.</li>
+                    <li><strong>V2L 기능:</strong> 차량 외부로 220V 전기를 공급할 수 있는 V2L 기능은 캠핑 등 야외 활동 시 매우 유용합니다.</li>
+                    <li><strong>우수한 AS망:</strong> 현대자동차의 전국적인 서비스 네트워크는 <strong>아이오닉5 유지보수</strong> 시 큰 <strong>장점</strong>입니다.</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4>오너들이 지적하는 아이오닉5의 단점</h4>
+                <ul>
+                    <li><strong>부족한 후방 시야:</strong> <strong>아이오닉5</strong>의 C필러 디자인 때문에 후방 시야 확보가 어렵다는 <strong>단점</strong>이 있습니다.</li>
+                    <li><strong>고가의 타이어 교체 비용:</strong> 전기차 전용 타이어는 일반 타이어보다 <strong>비용</strong>이 더 듭니다.</li>
+                    <li><strong>겨울철 주행거리 감소:</strong> 배터리 특성상 겨울철에는 주행 가능 거리가 줄어든다는 <strong>단점</strong>이 있습니다.</li>
+                    <li><strong>초기 차량 가격:</strong> 보조금을 받아도 여전히 내연기관차보다 높은 초기 구매 <strong>가격</strong>이 부담이 될 수 있습니다.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="faq" class="accordion">
+            <h2>자주 묻는 질문 (FAQ)</h2>
+            <dl>
+                <dt tabindex="0" aria-expanded="false">Q1. 2026년 전기차 보조금은 얼마나 받을 수 있나요?</dt>
+                <dd>2026년 현재 전기차 국비 보조금은 차량 가격, 주행거리, 배터리 성능 등에 따라 차등 지급됩니다. 아이오닉5의 경우 2025년 대비 보조금이 일부 축소되었지만, 여전히 상당한 <strong>혜택</strong>을 받을 수 있습니다. 정확한 <strong>보조금 견적</strong>은 구매 시점에 정부 정책을 확인해야 합니다. 지자체별 추가 보조금 <strong>지원금</strong>도 있으므로 거주지 관할 지자체 <strong>업체</strong>를 통해 확인하는 것이 좋습니다.</dd>
+                <dt tabindex="0" aria-expanded="false">Q2. 아이오닉5 배터리 수명은 얼마나 되나요?</dt>
+                <dd>아이오닉5에 사용된 리튬이온 배터리는 일반적으로 10년 이상 사용이 가능합니다. 현대자동차는 배터리에 대해 10년/20만km의 보증 기간을 제공하므로, 보증 기간 내에는 성능 저하에 대한 큰 걱정 없이 운행할 수 있습니다. <strong>아이오닉5 유지비</strong> 측면에서 <strong>장점</strong> 중 하나입니다.</dd>
+                <dt tabindex="0" aria-expanded="false">Q3. 충전 속도 차이가 <strong>아이오닉5 유지비</strong>에 영향을 주나요?</dt>
+                <dd>충전 속도는 <strong>유지비</strong> 자체보다는 편의성에 영향을 줍니다. <strong>아이오닉5</strong>는 800V 초급속 충전이 가능하여 18분 만에 10%에서 80%까지 충전할 수 있습니다. 급속 충전을 자주 이용하면 충전 <strong>비용</strong>이 높아질 수 있으나, 시간을 절약할 수 있다는 <strong>장점</strong>이 있습니다.</dd>
+                <dt tabindex="0" aria-expanded="false">Q4. 전기차 보험료를 <strong>저렴한곳</strong>에서 가입하는 방법이 있나요?</dt>
+                <dd>전기차 보험료는 보험사별로 <strong>차이점</strong>이 크므로, 여러 <strong>업체</strong>를 <strong>비교</strong>하는 것이 필수입니다. 특히 <strong>아이오닉5</strong>와 같은 친환경차는 보험사마다 <strong>할인</strong> 특약이나 <strong>지원금</strong>이 다르게 적용됩니다. <strong>네이버</strong>나 <strong>구글</strong>에서 '전기차 보험료 <strong>비교</strong>'를 검색하여 <strong>순위</strong>가 높은 <strong>업체</strong>를 <strong>추천</strong>합니다.</dd>
+            </dl>
+        </section>
+
+        <section id="external-links" class="external-links">
+            <h2>신뢰성 있는 외부 정보 출처</h2>
+            <p><strong>아이오닉5 유지비</strong>에 대한 더 자세한 정보를 원하시면 아래 공신력 있는 기관의 자료를 참고해 주세요.</p>
+            <ul>
+                <li><a href="https://www.kepco.co.kr/" target="_blank">한국전력공사 (KEPCO):</a> 전기차 충전 요금 및 계절별 요금제 상세 안내 (전기차 <strong>유지비</strong> 중 충전비 항목 관련)</li>
+                <li><a href="https://www.gov.kr/portal/loc_ev_subsi" target="_blank">정부24 - 전기차 구매보조금 신청 안내:</a> 2026년 전기차 <strong>보조금 혜택</strong> 및 신청 방법 확인</li>
+                <li><a href="https://namu.wiki/w/%ED%98%84%EB%8C%80%20%EC%95%84%EC%9D%B4%EC%98%A4%EB%8B%89%205" target="_blank">나무위키 - 현대 아이오닉 5:</a> 아이오닉5의 제원, <strong>장단점</strong> 및 역사 등 상세 정보</li>
+                <li><a href="https://www.mohw.go.kr/react/index.jsp" target="_blank">보건복지부 (Ministry of Health and Welfare):</a> 미세먼지 저감 등 환경 정책 관련 (전기차 <strong>장점</strong> 관련 배경 정보)</li>
+                <li><a href="https://www.hifis.net/" target="_blank">하이패스 차량등록 조회 시스템 (HIFIS):</a> 고속도로 통행료 할인 <strong>혜택</strong> 등 확인 가능</li>
+            </ul>
+        </section>
+
+        <p style="text-align: center; margin-top: 3rem; font-size: 1.1rem; color: #555;">본 페이지는 2026년 3월 기준으로 작성되었으며, 정책 및 물가 변동에 따라 실제 <strong>아이오닉5 유지비</strong>와 차이가 발생할 수 있습니다.</p>
     </main>
-  </body>
-</html>
+
+    <script>
+        // FAQ 아코디언 기능 (접기/펼치기)
+        document.querySelectorAll('dl dt').forEach((dt) => {
+            dt.addEventListener('click', () => {
+                const isActive = dt.classList.toggle('active');
+                dt.setAttribute('aria-expanded', isActive);
+            });
+            dt.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    dt.click();
+                }
+            });
+        });
+    </script>
+  
